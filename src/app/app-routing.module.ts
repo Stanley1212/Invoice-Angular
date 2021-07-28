@@ -4,7 +4,7 @@ import { ClientesListaComponent } from './Components/clientes/clientes-lista/cli
 import { DashboardComponent } from './Components/dashboard/dashboard/dashboard.component';
 import { ProductosListComponent } from './Components/productos/productos-list/productos-list.component';
 import { SuplidoresListaComponent } from './Components/Suplidores/suplidores-lista/suplidores-lista.component';
-import { UnidadListComponent } from './Components/unidad/list/unidad-list/unidad-list.component';
+import { UnidadListComponent } from './Components/unidad/unidad-list/unidad-list.component';
 
 const routes: Routes = [
   {path:"", component:DashboardComponent },

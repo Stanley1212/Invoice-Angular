@@ -7,7 +7,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatTreeModule} from '@angular/material/tree';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -18,7 +20,9 @@ import {MatTreeModule} from '@angular/material/tree';
     MatButtonModule,
     MatButtonToggleModule,
     MatMenuModule,
-    MatTreeModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule
   ],
   imports: [
     CommonModule

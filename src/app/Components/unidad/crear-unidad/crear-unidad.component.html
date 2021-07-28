@@ -1,0 +1,26 @@
+
+<h2>Crear Unidad de Medida</h2>
+
+<form (submit)="guardarCambios()" [formGroup]="form">
+<mat-form-field appearance="outline">
+<mat-label>Nombre *</mat-label>
+<input matInput formControlName="nombre" />
+</mat-form-field>
+
+<div>
+    <button 
+        mat-flat-button 
+        color="primary"
+        [disabled]="form.invalid">
+
+        <mat-icon>
+            save
+        </mat-icon>
+        Guardar Cambios
+    </button>
+
+    <a style="margin-left: 5px;" mat-stroked-button (click)="onNoClick()">
+        Cancelar
+    </a>
+</div>
+</form>
