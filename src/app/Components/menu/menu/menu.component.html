@@ -1,0 +1,78 @@
+    <mat-toolbar color="primary">
+      <span>
+        <a routerLink="" mat-button>
+
+          <mat-icon>
+            point_of_sale
+          </mat-icon>
+          My App
+        </a>
+      </span>
+
+      <span>
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>
+                local_shipping
+            </mat-icon>
+            Inventario
+        </button>
+        <mat-menu #menu="matMenu">
+          <button routerLink="productos" mat-menu-item>
+              <mat-icon>
+                widgets
+              </mat-icon>
+              Articulos
+            </button>
+          <button routerLink="unidades" mat-menu-item>
+            <mat-icon>
+                straighten
+            </mat-icon>  
+            Unidades de medida</button>
+        </mat-menu>
+      </span>
+
+      <span>
+        <button mat-button [matMenuTriggerFor]="ventas">
+            <mat-icon>
+                storefront
+            </mat-icon>
+            Ventas
+        </button>
+        <mat-menu #ventas="matMenu">
+          <button routerLink="clientes" mat-menu-item>
+              <mat-icon>
+                people
+              </mat-icon>
+              Clientes
+            </button>
+          <button routerLink="unidades" mat-menu-item>
+            <mat-icon>
+                receipt
+            </mat-icon>  
+            Facturas</button>
+        </mat-menu>
+      </span>
+
+      <span>
+        <button mat-button [matMenuTriggerFor]="comparas">
+            <mat-icon>
+                shopping_cart
+            </mat-icon>
+            Compras
+        </button>
+        <mat-menu #comparas="matMenu">
+          <button routerLink="suplidores" mat-menu-item>
+              <mat-icon>
+                people
+              </mat-icon>
+              Suplidores
+            </button>
+          <button routerLink="unidades" mat-menu-item>
+            <mat-icon>
+                receipt
+            </mat-icon>  
+            Facturas</button>
+        </mat-menu>
+      </span>
+      
+    </mat-toolbar>
