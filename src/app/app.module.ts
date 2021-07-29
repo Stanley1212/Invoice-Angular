@@ -15,6 +15,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { CrearUnidadComponent } from './Components/unidad/crear-unidad/crear-unidad.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { CrearClientesComponent } from './Components/clientes/crear-clientes/crear-clientes.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     ProductosListComponent,
     ClientesListaComponent,
     SuplidoresListaComponent,
-    CrearUnidadComponent
+    CrearUnidadComponent,
+    CrearClientesComponent
   ],
   imports: [
     BrowserModule,

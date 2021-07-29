@@ -1,11 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UnidadesCreate } from 'src/app/models/unidades/unidades-create';
 import { UnidadesList } from 'src/app/models/unidades/unidades-list';
 import { UnidadesService } from 'src/app/services/unidades.service';
 import { CrearUnidadComponent } from '../crear-unidad/crear-unidad.component';
-import {MatPaginator, PageEvent} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import {PageEvent} from '@angular/material/paginator';
 import { Pagination } from 'src/app/models/pagination';
 
 @Component({
