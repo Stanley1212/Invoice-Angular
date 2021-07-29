@@ -16,6 +16,8 @@ import { CrearUnidadComponent } from './Components/unidad/crear-unidad/crear-uni
 import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { CrearClientesComponent } from './Components/clientes/crear-clientes/crear-clientes.component';
+import { CrearSuplidorComponent } from './Components/Suplidores/crear-suplidor/crear-suplidor.component';
+import { CrearproductosComponent } from './Components/productos/crearproductos/crearproductos.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CrearClientesComponent } from './Components/clientes/crear-clientes/cre
     ClientesListaComponent,
     SuplidoresListaComponent,
     CrearUnidadComponent,
-    CrearClientesComponent
+    CrearClientesComponent,
+    CrearSuplidorComponent,
+    CrearproductosComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,10 @@ export class UnidadesService {
     return this.http.get<Pagination<UnidadesList[]>>(`${this.urlBase}?pageSize=${cantidadElementosAMostra}&currentPage=${pagina}`);
   }
 
+  public obtenerActivas(): Observable<UnidadesList[]> {
+    return this.http.get<UnidadesList[]>(`${this.urlBase}/all-Active`);
+  }
+
   public Crear(data:UnidadesCreate) {
     return this.http.post(this.urlBase,data);
   }

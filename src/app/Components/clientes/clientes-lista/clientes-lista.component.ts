@@ -14,7 +14,7 @@ import { CrearClientesComponent } from '../crear-clientes/crear-clientes.compone
 })
 export class ClientesListaComponent implements OnInit {
 
-  cliente:ClientesCreateDto;
+  cliente:ClientesCreateDto = new ClientesCreateDto();
   unidadesList:Pagination<ClientesListDto[]>=new Pagination<ClientesListDto[]>();
   displayedColumns: string[] = ['Name', "Phone","Address","Active","Acciones"];
   cantidadTotalRegistros;
@@ -31,8 +31,8 @@ export class ClientesListaComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CrearClientesComponent, {
-      width: '40%',
-      data:{}//this.unidad
+      width: '35%',
+      data:this.cliente
     });
 
     dialogRef.afterClosed().subscribe((result: ClientesCreateDto) => {
@@ -42,7 +42,7 @@ export class ClientesListaComponent implements OnInit {
   }
 
   update(element: ClientesCreateDto) {
-    this.cliente =element;
+    this.cliente = element;
     this.openDialog();
   }
   
