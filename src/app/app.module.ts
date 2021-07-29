@@ -11,9 +11,10 @@ import { UnidadListComponent } from './Components/unidad/unidad-list/unidad-list
 import { ProductosListComponent } from './Components/productos/productos-list/productos-list.component';
 import { ClientesListaComponent } from './Components/clientes/clientes-lista/clientes-lista.component';
 import { SuplidoresListaComponent } from './Components/Suplidores/suplidores-lista/suplidores-lista.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { CrearUnidadComponent } from './Components/unidad/crear-unidad/crear-unidad.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

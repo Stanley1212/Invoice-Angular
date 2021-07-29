@@ -1,3 +1,4 @@
 export class UnidadesCreate {
-    Name:string;
+    id:number;
+    name:string;
 }

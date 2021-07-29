@@ -1,17 +1,24 @@
 
 <h2>Crear Unidad de Medida</h2>
 
-<form (submit)="guardarCambios()" [formGroup]="form">
+<form autocomplete="off" (submit)="guardarCambios(frm)"  #frm="ngForm">
 <mat-form-field appearance="outline">
-<mat-label>Nombre *</mat-label>
-<input matInput formControlName="nombre" />
+<mat-label>Nombre</mat-label>
+<input matInput 
+    [(ngModel)]="unidadesCreate.name"
+    name="name"
+    #name="ngModel"
+    [class.is-invalid]="name.touched && name.invalid"
+    required/>
+
+<mat-error *ngIf="form.invalid">El nombre es requerido</mat-error>
 </mat-form-field>
 
 <div>
     <button 
         mat-flat-button 
         color="primary"
-        [disabled]="form.invalid">
+        [disabled]="frm.invalid">
 
         <mat-icon>
             save

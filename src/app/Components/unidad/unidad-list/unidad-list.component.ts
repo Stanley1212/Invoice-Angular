@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UnidadesCreate } from 'src/app/models/unidades/unidades-create';
 import { UnidadesList } from 'src/app/models/unidades/unidades-list';
 import { UnidadesService } from 'src/app/services/unidades.service';
 import { CrearUnidadComponent } from '../crear-unidad/crear-unidad.component';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
+import { Pagination } from 'src/app/models/pagination';
 
 @Component({
   selector: 'app-unidad-list',
@@ -12,36 +15,51 @@ import { CrearUnidadComponent } from '../crear-unidad/crear-unidad.component';
 })
 export class UnidadListComponent implements OnInit {
 
-  unidadesCreate :UnidadesCreate= new UnidadesCreate();
-  unidadesList: UnidadesList[];
+  unidad:UnidadesCreate= new UnidadesCreate();
+  unidadesList:Pagination<UnidadesList[]>=new Pagination<UnidadesList[]>();
+  displayedColumns: string[] = ['Name', "Active","Acciones"];
+  cantidadTotalRegistros;
+  paginaActual = 1;
+  cantidadRegistrosAMostrar = 10;
   
   constructor(public dialog: MatDialog, private unidadService:UnidadesService) {
-    
-    this.unidadService.obtenerTodo().subscribe((resultData:any[])=>{
-      console.log(resultData.data);
-      this.unidadesList = resultData.data;
-      console.log(this.unidadesList)
-    });
-   }
+    this.cargarData(1,100);
+  }
 
   ngOnInit(): void {
   }
 
   openDialog(): void {
-    console.log("log");
     const dialogRef = this.dialog.open(CrearUnidadComponent, {
       width: '35%',
-      data: this.unidadesCreate
+      data:this.unidad
     });
 
     dialogRef.afterClosed().subscribe((result: UnidadesCreate) => {
-      console.log('The dialog was closed');
-      this.unidadesCreate = result;
+      this.cargarData(1,100);
+      this.unidad = new UnidadesCreate();
     });
   }
-
-  cargarData() {
-
+  update(element: UnidadesCreate) {
+    this.unidad =element;
+    this.openDialog();
   }
-
+  
+  borrar(id:number){
+    this.unidadService.Eliminar(id).subscribe((resultData:Pagination<UnidadesList[]>)=>{
+      this.cargarData(1,100);
+    },err=>console.error(err));
+  }
+  
+  actualizarPaginacion(datos: PageEvent){
+    this.paginaActual = datos.pageIndex + 1;
+    this.cantidadRegistrosAMostrar = datos.pageSize;
+    this.cargarData(this.paginaActual, this.cantidadRegistrosAMostrar);
+  }
+  cargarData(pagina: number, cantidadElementosAMostra) {
+    this.unidadService.obtenerTodo(pagina,cantidadElementosAMostra).subscribe((resultData:Pagination<UnidadesList[]>)=>{
+      this.unidadesList = resultData;
+      this.cantidadTotalRegistros = resultData.totalRecords;
+    });
+  }
 }
