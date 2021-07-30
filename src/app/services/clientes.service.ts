@@ -18,6 +18,10 @@ export class ClientesService {
     return this.http.get<Pagination<ClientesListDto[]>>(`${this.urlBase}?pageSize=${cantidadElementosAMostra}&currentPage=${pagina}`);
   }
 
+  public obtenerActive(): Observable<ClientesListDto[]> {
+    return this.http.get<ClientesListDto[]>(`${this.urlBase}/all-Active`);
+  }
+
   public Crear(data:ClientesCreateDto) {
     return this.http.post(this.urlBase,data);
   }

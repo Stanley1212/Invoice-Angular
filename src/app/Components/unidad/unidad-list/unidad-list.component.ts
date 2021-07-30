@@ -36,6 +36,8 @@ export class UnidadListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: UnidadesCreate) => {
       this.cargarData(1,100);
+      console.log(result);
+      
       this.unidad = new UnidadesCreate();
     });
   }

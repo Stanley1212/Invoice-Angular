@@ -18,6 +18,10 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { CrearClientesComponent } from './Components/clientes/crear-clientes/crear-clientes.component';
 import { CrearSuplidorComponent } from './Components/Suplidores/crear-suplidor/crear-suplidor.component';
 import { CrearproductosComponent } from './Components/productos/crearproductos/crearproductos.component';
+import { VentasListComponent } from './Components/ventas/ventas-list/ventas-list.component';
+import { ComprasListComponent } from './Components/compras/compras-list/compras-list.component';
+import { VentasCreateComponent } from './Components/ventas/ventas-create/ventas-create.component';
+import { BuscarComponent } from './Components/shared/buscar/buscar.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import { CrearproductosComponent } from './Components/productos/crearproductos/c
     CrearClientesComponent,
     CrearSuplidorComponent,
     CrearproductosComponent,
+    VentasListComponent,
+    ComprasListComponent,
+    VentasCreateComponent,
+    BuscarComponent,
   ],
   imports: [
     BrowserModule,

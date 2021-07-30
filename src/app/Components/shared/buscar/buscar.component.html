@@ -1,0 +1,13 @@
+<mat-form-field appearance="outline">
+  <mat-label>Buscar</mat-label>
+  <input matInput [(ngModel)]="buscarText" name="name" #name="ngModel" />
+
+</mat-form-field>
+
+<div class="list-generic">
+  <mat-selection-list #item [multiple]="false">
+    <mat-list-option *ngFor="let item of data" [value]="item.id" (click)="Seleccionado(item)">
+      {{item.name}}
+    </mat-list-option>
+  </mat-selection-list>
+</div>

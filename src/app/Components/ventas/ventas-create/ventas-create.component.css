@@ -1,0 +1,15 @@
+mat-form-field {
+    width: 30%;
+}
+
+table {
+    width: 100%;
+}
+
+.table-fiel {
+    width: 100% !important;
+}
+
+.table-cell {
+    width: 50px !important;
+}

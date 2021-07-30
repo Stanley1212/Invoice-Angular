@@ -14,6 +14,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatTableModule,
     MatPaginatorModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule
   ],
   imports: [
     CommonModule

@@ -17,6 +17,11 @@ export class ArticuloService {
     return this.http.get<Pagination<ArticuloCreateDto[]>>(`${this.urlBase}?pageSize=${cantidadElementosAMostra}&currentPage=${pagina}`);
   }
 
+  public obtenerActive(): Observable<ArticuloCreateDto[]> {
+    return this.http.get<ArticuloCreateDto[]>(`${this.urlBase}/all-Active`);
+  }
+
+
   public Crear(data:ArticuloCreateDto) {
     return this.http.post(this.urlBase,data);
   }

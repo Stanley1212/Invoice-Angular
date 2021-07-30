@@ -1,21 +1,38 @@
-
-<h1>Unidades</h1>
+<h1>Ventas</h1>
 <hr/>
 
-<button mat-raised-button (click)="openDialog()" color="primary">
-  <mat-icon aria-hidden="false" aria-label="Agregar">
-    add
-  </mat-icon>
-  Agregar Nuevo
+<button mat-raised-button routerLink="crear" color="primary">
+    <mat-icon aria-hidden="false" aria-label="Agregar">
+      add
+    </mat-icon>
+    Agregar Nuevo
 </button>
 
-<!--<app-crear-unidad></app-crear-unidad>-->
+  <div class="mat-elevation-z8 table-index" style="margin-top: 20px;">
+    <table mat-table [dataSource]="List.data">
+        <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
 
-<div class="mat-elevation-z8" style="margin-top: 20px;">
-    <table mat-table [dataSource]="unidadesList.data">
-        <ng-container matColumnDef="Name">
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <ng-container matColumnDef="Customer">
+            <th mat-header-cell *matHeaderCellDef> Cliente </th>
+            <td mat-cell *matCellDef="let element"> {{ element.customer.name }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+            <td mat-cell *matCellDef="let element"> {{ element.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Discount">
+            <th mat-header-cell *matHeaderCellDef> Descuento</th>
+            <td mat-cell *matCellDef="let element"> {{ element.discount}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Total">
+            <th mat-header-cell *matHeaderCellDef> Total</th>
+            <td mat-cell *matCellDef="let element"> {{ element.total}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Active">
@@ -32,7 +49,7 @@
                 color="primary"
                 >Editar</button>
             <button mat-flat-button color="warn" style="margin-left: 5px;"
-                [swal]="{title: 'Confirmación',
+                [swal]="{title: 'Confirmación', 
                 text: '¿Está seguro que desea Activar/desactivar el registro?', 
                 showCancelButton: true}"
                 (confirm)="borrar(element.id)">{{ (!element.active) ? "Activar" : "Desactivar" }}
@@ -49,5 +66,5 @@
         class="mat-elevation-z8"
         (page)="actualizarPaginacion($event)">
     </mat-paginator>
-
 </div>
+
