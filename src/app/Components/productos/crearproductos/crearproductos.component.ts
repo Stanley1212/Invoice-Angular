@@ -40,7 +40,11 @@ export class CrearproductosComponent implements OnInit {
       Object.values(frm.controls).forEach((control) => control.markAsTouched());
       return;
     }
-    
+
+    if (this.selectFormControl.invalid || this.selectFormControl2.invalid) {
+      return;
+    }
+
     if (this.dataRef.id > 0) {
     this.service.modificar(this.dataRef)
     .subscribe(result => {
@@ -52,7 +56,16 @@ export class CrearproductosComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
-    }, err=> console.error(err));
+    }, err=> {
+      console.log(err);
+      
+      if (!err.error.message) {
+        Swal.fire("Error",JSON.stringify(err),"error");
+        return;
+      }
+
+      Swal.fire("Error",`${err.error.code} - ${err.error.message}`,"error");
+    });
     }
     else {
     this.service.Crear(this.dataRef)
@@ -65,7 +78,16 @@ export class CrearproductosComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
-    }, err=> console.error(err));
+    }, err=> {
+      console.log(err);
+      
+      if (!err.error.message) {
+        Swal.fire("Error",JSON.stringify(err),"error");
+        return;
+      }
+
+      Swal.fire("Error",`${err.error.code} - ${err.error.message}`,"error");
+    });
     }
   }
 

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClientesListaComponent } from './Components/clientes/clientes-lista/clientes-lista.component';
+import { ComprasCreateComponent } from './Components/compras/compras-create/compras-create.component';
 import { ComprasListComponent } from './Components/compras/compras-list/compras-list.component';
 import { DashboardComponent } from './Components/dashboard/dashboard/dashboard.component';
 import { ProductosListComponent } from './Components/productos/productos-list/productos-list.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:"ventas", component:VentasListComponent},
   {path:"ventas/crear", component:VentasCreateComponent},
   {path:"compras", component:ComprasListComponent },
+  {path:"compras/crear", component:ComprasCreateComponent },
   {path:"**", component:DashboardComponent },
 
 ];

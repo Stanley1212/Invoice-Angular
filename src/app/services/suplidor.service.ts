@@ -17,6 +17,10 @@ export class SuplidorService {
     return this.http.get<Pagination<SuplidoresCreateDto[]>>(`${this.urlBase}?pageSize=${cantidadElementosAMostra}&currentPage=${pagina}`);
   }
 
+  public obtenerActive(): Observable<SuplidoresCreateDto[]> {
+    return this.http.get<SuplidoresCreateDto[]>(`${this.urlBase}/all-Active`);
+  }
+
   public Crear(data:SuplidoresCreateDto) {
     return this.http.post(this.urlBase,data);
   }

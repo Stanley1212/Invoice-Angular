@@ -18,11 +18,27 @@ export class BuscarComponent implements OnInit {
   }
 
   Seleccionado(item) {
-    
     this.dialogRef.close(item);
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  buscar() {
+    let arreglo:any[] = [];
+
+    for (let item of this.data) {
+      let name = item.name.toLocaleLowerCase();
+      if (name.indexOf(this.buscarText.toLocaleLowerCase()) >=0) {
+        arreglo.push(item);
+      }      
+    }
+
+    if (this.buscarText.trim() === "") {
+      return this.data;
+    }
+
+    return arreglo;
   }
 }

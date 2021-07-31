@@ -6,6 +6,7 @@ import { UnidadesService } from 'src/app/services/unidades.service';
 import { CrearUnidadComponent } from '../crear-unidad/crear-unidad.component';
 import {PageEvent} from '@angular/material/paginator';
 import { Pagination } from 'src/app/models/pagination';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-unidad-list',
@@ -22,7 +23,7 @@ export class UnidadListComponent implements OnInit {
   cantidadRegistrosAMostrar = 10;
   
   constructor(public dialog: MatDialog, private unidadService:UnidadesService) {
-    this.cargarData(1,100);
+    this.cargarData(1,10);
   }
 
   ngOnInit(): void {
@@ -35,7 +36,7 @@ export class UnidadListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: UnidadesCreate) => {
-      this.cargarData(1,100);
+      this.cargarData(1,10);
       console.log(result);
       
       this.unidad = new UnidadesCreate();
@@ -48,8 +49,17 @@ export class UnidadListComponent implements OnInit {
   
   borrar(id:number){
     this.unidadService.Eliminar(id).subscribe((resultData:Pagination<UnidadesList[]>)=>{
-      this.cargarData(1,100);
-    },err=>console.error(err));
+      this.cargarData(1,10);
+    },err=>{
+      console.log(err);
+      
+      if (!err.error.message) {
+        Swal.fire("Error",JSON.stringify(err),"error");
+        return;
+      }
+
+      Swal.fire("Error",`${err.error.code} - ${err.error.message}`,"error");
+    });
   }
   
   actualizarPaginacion(datos: PageEvent){

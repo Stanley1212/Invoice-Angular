@@ -5,6 +5,7 @@ import { ClientesCreateDto } from 'src/app/models/clientes/clientes-create-dto';
 import { ClientesListDto } from 'src/app/models/clientes/clientes-create-list-dto';
 import { Pagination } from 'src/app/models/pagination';
 import { ClientesService } from 'src/app/services/clientes.service';
+import Swal from 'sweetalert2';
 import { CrearClientesComponent } from '../crear-clientes/crear-clientes.component';
 
 @Component({
@@ -22,7 +23,7 @@ export class ClientesListaComponent implements OnInit {
   cantidadRegistrosAMostrar = 10;
 
   constructor(public dialog: MatDialog,private clienteService:ClientesService) {
-    this.cargarData(1,100);
+    this.cargarData(1,10);
    }
 
   ngOnInit(): void {
@@ -36,7 +37,7 @@ export class ClientesListaComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: ClientesCreateDto) => {
-      this.cargarData(1,100);
+      this.cargarData(1,10);
       this.cliente = new ClientesCreateDto();
     });
   }
@@ -49,7 +50,16 @@ export class ClientesListaComponent implements OnInit {
   borrar(id:number){
     this.clienteService.Eliminar(id).subscribe((resultData:Pagination<ClientesListDto[]>)=>{
       this.cargarData(1,100);
-    },err=>console.error(err));
+    },err=>{
+      console.log(err);
+      
+      if (!err.error.message) {
+        Swal.fire("Error",JSON.stringify(err),"error");
+        return;
+      }
+
+      Swal.fire("Error",`${err.error.code} - ${err.error.message}`,"error");
+    });
   }
   
   actualizarPaginacion(datos: PageEvent){

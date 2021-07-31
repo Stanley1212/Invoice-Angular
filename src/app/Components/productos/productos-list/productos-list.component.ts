@@ -4,6 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { ArticuloCreateDto } from 'src/app/models/articulo/articulo-create-dto';
 import { Pagination } from 'src/app/models/pagination';
 import { ArticuloService } from 'src/app/services/articulo.service';
+import Swal from 'sweetalert2';
 import { CrearproductosComponent } from '../crearproductos/crearproductos.component';
 
 @Component({
@@ -21,7 +22,7 @@ export class ProductosListComponent implements OnInit {
   cantidadRegistrosAMostrar = 10;
 
   constructor(public dialog: MatDialog,private articuloService:ArticuloService) { 
-    this.cargarData(1,100);
+    this.cargarData(1,10);
   }
 
   ngOnInit(): void {
@@ -34,7 +35,7 @@ export class ProductosListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: ArticuloCreateDto) => {
-      this.cargarData(1,100);
+      this.cargarData(1,10);
       this.dataRef = new ArticuloCreateDto();
     });
   }
@@ -46,8 +47,17 @@ export class ProductosListComponent implements OnInit {
   
   borrar(id:number){
     this.articuloService.Eliminar(id).subscribe((resultData:Pagination<ArticuloCreateDto[]>)=>{
-      this.cargarData(1,100);
-    },err=>console.error(err));
+      this.cargarData(1,10);
+    },err=>{
+      console.log(err);
+      
+      if (!err.error.message) {
+        Swal.fire("Error",JSON.stringify(err),"error");
+        return;
+      }
+
+      Swal.fire("Error",`${err.error.code} - ${err.error.message}`,"error");
+    });
   }
   
   actualizarPaginacion(datos: PageEvent){

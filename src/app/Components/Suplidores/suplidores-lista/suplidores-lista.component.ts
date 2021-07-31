@@ -4,6 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Pagination } from 'src/app/models/pagination';
 import { SuplidoresCreateDto } from 'src/app/models/suplidores/suplidores-create-dto';
 import { SuplidorService } from 'src/app/services/suplidor.service';
+import Swal from 'sweetalert2';
 import { CrearSuplidorComponent } from '../crear-suplidor/crear-suplidor.component';
 
 @Component({
@@ -21,7 +22,7 @@ export class SuplidoresListaComponent implements OnInit {
   cantidadRegistrosAMostrar = 10;
 
   constructor(public dialog: MatDialog,private suplidorService:SuplidorService) {
-    this.cargarData(1,100);
+    this.cargarData(1,10);
    }
 
   ngOnInit(): void {
@@ -35,7 +36,7 @@ export class SuplidoresListaComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: SuplidoresCreateDto) => {
-      this.cargarData(1,100);
+      this.cargarData(1,10);
       this.suplidor = new SuplidoresCreateDto();
     });
   }
@@ -48,7 +49,16 @@ export class SuplidoresListaComponent implements OnInit {
   borrar(id:number){
     this.suplidorService.Eliminar(id).subscribe((resultData:Pagination<SuplidoresCreateDto[]>)=>{
       this.cargarData(1,100);
-    },err=>console.error(err));
+    },err=>{
+      console.log(err);
+      
+      if (!err.error.message) {
+        Swal.fire("Error",JSON.stringify(err),"error");
+        return;
+      }
+
+      Swal.fire("Error",`${err.error.code} - ${err.error.message}`,"error");
+    });
   }
   
   actualizarPaginacion(datos: PageEvent){

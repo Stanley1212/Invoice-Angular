@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Pagination } from 'src/app/models/pagination';
 import { VentasCreateListDto } from 'src/app/models/ventas/ventas-create-list-dto';
 import { VentasService } from 'src/app/services/ventas.service';
-import { BuscarComponent } from '../../shared/buscar/buscar.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ventas-list',
@@ -20,7 +19,7 @@ export class VentasListComponent implements OnInit {
   cantidadRegistrosAMostrar = 10;
 
   constructor(private ventasService:VentasService) { 
-    this.cargarData(1,100);
+    this.cargarData(1,10);
   }
 
   ngOnInit(): void {
@@ -33,8 +32,17 @@ export class VentasListComponent implements OnInit {
 
   borrar(id:number){
     this.ventasService.Eliminar(id).subscribe(resultData=>{
-      this.cargarData(1,100);
-    },err=>console.error(err));
+      this.cargarData(1,10);
+    },err=>{
+      console.log(err);
+      
+      if (!err.error.message) {
+        Swal.fire("Error",JSON.stringify(err),"error");
+        return;
+      }
+
+      Swal.fire("Error",`${err.error.code} - ${err.error.message}`,"error");
+    });
   }
   
   actualizarPaginacion(datos: PageEvent){
@@ -45,8 +53,6 @@ export class VentasListComponent implements OnInit {
   
   cargarData(pagina: number, cantidadElementosAMostra) {
     this.ventasService.obtenerTodo(pagina,cantidadElementosAMostra).subscribe((resultData:Pagination<VentasCreateListDto[]>)=>{
-      console.log(resultData);
-      
       this.List = resultData;
       this.cantidadTotalRegistros = resultData.totalRecords;
     });

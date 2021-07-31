@@ -48,7 +48,16 @@ export class CrearUnidadComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
-    }, err=> console.error(err));
+    }, err=> {
+      console.log(err);
+      
+      if (!err.message) {
+        Swal.fire("Error",JSON.stringify(err),"error");
+        return;
+      }
+
+      Swal.fire("Error",`${err.code} - ${err.message}`,"error");
+    });
     }
     else {
     this.unidadService.Crear(this.unidadesCreate)
@@ -61,7 +70,16 @@ export class CrearUnidadComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
-    }, err=> console.error(err));
+    }, err=> {
+      console.log(err);
+      
+      if (!err.error.message) {
+        Swal.fire("Error",JSON.stringify(err),"error");
+        return;
+      }
+
+      Swal.fire("Error",`${err.error.code} - ${err.error.message}`,"error");
+    });
     }
   }
 

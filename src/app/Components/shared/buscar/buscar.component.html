@@ -1,12 +1,12 @@
 <mat-form-field appearance="outline">
   <mat-label>Buscar</mat-label>
-  <input matInput [(ngModel)]="buscarText" name="name" #name="ngModel" />
+  <input matInput [(ngModel)]="buscarText" name="buscarText" (keyup.enter)="buscar()"/>
 
 </mat-form-field>
 
-<div class="list-generic">
+<div class="list-generic" style="max-height: 300px;overflow-y: scroll;">
   <mat-selection-list #item [multiple]="false">
-    <mat-list-option *ngFor="let item of data" [value]="item.id" (click)="Seleccionado(item)">
+    <mat-list-option *ngFor="let item of buscar()" [value]="item.id" (click)="Seleccionado(item)">
       {{item.name}}
     </mat-list-option>
   </mat-selection-list>
