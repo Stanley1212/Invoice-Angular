@@ -4,6 +4,8 @@ import { ClientesListaComponent } from './Components/clientes/clientes-lista/cli
 import { ComprasCreateComponent } from './Components/compras/compras-create/compras-create.component';
 import { ComprasListComponent } from './Components/compras/compras-list/compras-list.component';
 import { DashboardComponent } from './Components/dashboard/dashboard/dashboard.component';
+import { ProduccionCrearComponent } from './Components/produccion/produccion-crear/produccion-crear.component';
+import { ProduccionListComponent } from './Components/produccion/produccion-list/produccion-list.component';
 import { ProductosListComponent } from './Components/productos/productos-list/productos-list.component';
 import { SuplidoresListaComponent } from './Components/Suplidores/suplidores-lista/suplidores-lista.component';
 import { UnidadListComponent } from './Components/unidad/unidad-list/unidad-list.component';
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path:"ventas/crear", component:VentasCreateComponent},
   {path:"compras", component:ComprasListComponent },
   {path:"compras/crear", component:ComprasCreateComponent },
+  {path:"produccion", component:ProduccionListComponent },
+  {path:"produccion/crear", component:ProduccionCrearComponent },
   {path:"**", component:DashboardComponent },
 
 ];

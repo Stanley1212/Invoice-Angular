@@ -23,6 +23,8 @@ import { ComprasListComponent } from './Components/compras/compras-list/compras-
 import { VentasCreateComponent } from './Components/ventas/ventas-create/ventas-create.component';
 import { BuscarComponent } from './Components/shared/buscar/buscar.component';
 import { ComprasCreateComponent } from './Components/compras/compras-create/compras-create.component';
+import { ProduccionListComponent } from './Components/produccion/produccion-list/produccion-list.component';
+import { ProduccionCrearComponent } from './Components/produccion/produccion-crear/produccion-crear.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { ComprasCreateComponent } from './Components/compras/compras-create/comp
     VentasCreateComponent,
     BuscarComponent,
     ComprasCreateComponent,
+    ProduccionListComponent,
+    ProduccionCrearComponent,
   ],
   imports: [
     BrowserModule,
