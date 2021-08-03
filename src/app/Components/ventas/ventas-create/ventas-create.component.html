@@ -34,6 +34,14 @@
           readonly />
       </mat-form-field>
     </p>
+
+    <p style="margin-bottom: 15px;">
+      <mat-radio-group [(ngModel)]="Object.type" name="type" #type="ngModel">
+        <mat-radio-button value="0" [checked]="true">Factura</mat-radio-button>
+        <mat-radio-button value="1" style="margin-left: 5px;">Nota de Crédito</mat-radio-button>
+      </mat-radio-group>
+    </p>
+
     <p>
       <button mat-flat-button color="primary" [disabled]="frm.invalid">
 

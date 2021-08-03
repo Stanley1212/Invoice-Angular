@@ -15,7 +15,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatListModule} from '@angular/material/list';
-
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -33,7 +33,8 @@ import {MatListModule} from '@angular/material/list';
     MatPaginatorModule,
     MatSnackBarModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    MatRadioModule
   ],
   imports: [
     CommonModule
