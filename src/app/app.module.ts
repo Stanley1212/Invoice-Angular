@@ -25,6 +25,8 @@ import { BuscarComponent } from './Components/shared/buscar/buscar.component';
 import { ComprasCreateComponent } from './Components/compras/compras-create/compras-create.component';
 import { ProduccionListComponent } from './Components/produccion/produccion-list/produccion-list.component';
 import { ProduccionCrearComponent } from './Components/produccion/produccion-crear/produccion-crear.component';
+import { VentasViewComponent } from './Components/ventas/ventas-view/ventas-view.component';
+import { ComprasViewComponent } from './Components/compras/compras-view/compras-view.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { ProduccionCrearComponent } from './Components/produccion/produccion-cre
     ComprasCreateComponent,
     ProduccionListComponent,
     ProduccionCrearComponent,
+    VentasViewComponent,
+    ComprasViewComponent,
   ],
   imports: [
     BrowserModule,

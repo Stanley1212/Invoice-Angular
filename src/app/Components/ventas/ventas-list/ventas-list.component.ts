@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class VentasListComponent implements OnInit {
 
   List:Pagination<VentasCreateListDto[]>=new Pagination<VentasCreateListDto[]>();
-  displayedColumns: string[] = ['ID', "Customer","Description","Discount", "Total" , "Active", "Acciones"];
+  displayedColumns: string[] = ['ID', "Customer","Description","Type","Discount", "Total" , "Acciones"];
   cantidadTotalRegistros;
   paginaActual = 1;
   cantidadRegistrosAMostrar = 10;

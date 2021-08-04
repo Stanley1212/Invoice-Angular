@@ -1,0 +1,78 @@
+<h1>Compra : {{Object.id}}</h1>
+
+<div class="example-container">
+    <form autocomplete="off" >
+        <p style="margin-left: 3px">
+            <mat-form-field appearance="outline">
+                <mat-label>Suplidor</mat-label>
+                <input matInput type="text" [(ngModel)]="Object.supplier.name" name="name" #name="ngModel" />
+                
+            </mat-form-field>
+
+            <mat-form-field style="margin-left: 5px" appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <input matInput type="text" [(ngModel)]="Object.description" name="descripcion"
+                    #descripcion="ngModel" />
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field style="margin-left: 5px" appearance="outline">
+                <mat-label>Total Descuento</mat-label>
+                <input matInput type="text" [(ngModel)]="Object.discount" name="discountAmount"
+                    #discountAmount="ngModel" required readonly />
+            </mat-form-field>
+
+            <mat-form-field style="margin-left: 5px" appearance="outline">
+                <mat-label>Total</mat-label>
+                <input matInput type="text" [(ngModel)]="Object.total" name="totalAmount" #totalAmount="ngModel"
+                    required readonly />
+            </mat-form-field>
+        </p>
+        <p>
+            <button mat-flat-button routerLink="/compras">Cancelar</button>
+        </p>
+    </form>
+    <br />
+    <hr />
+
+    <div class="mat-elevation-z8 table-index" style="margin-top: 20px">
+        <table mat-table [dataSource]="Object.billDetails">
+            <ng-container matColumnDef="Producto" class="">
+                <th mat-header-cell *matHeaderCellDef class=""> Producto</th>
+                <td mat-cell *matCellDef="let element" class="">{{ element.item.name }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Cantidad" class="table-cell">
+                <th mat-header-cell *matHeaderCellDef class="table-cell">Cantidad</th>
+                <td mat-cell *matCellDef="let element" class="table-cell">
+                   {{ element.quantity }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Precio">
+                <th mat-header-cell *matHeaderCellDef>Precio</th>
+                <td mat-cell *matCellDef="let element" class="table-cell">
+                    {{ element.price}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Descuento">
+                <th mat-header-cell *matHeaderCellDef>Descuento</th>
+                <td mat-cell *matCellDef="let element" class="table-cell">
+                    {{element.discount}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Total">
+                <th mat-header-cell *matHeaderCellDef>Total</th>
+                <td mat-cell *matCellDef="let element" class="table-cell">
+                    {{element.total}}
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+    </div>
+</div>

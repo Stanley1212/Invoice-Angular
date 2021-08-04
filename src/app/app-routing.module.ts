@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClientesListaComponent } from './Components/clientes/clientes-lista/clientes-lista.component';
 import { ComprasCreateComponent } from './Components/compras/compras-create/compras-create.component';
 import { ComprasListComponent } from './Components/compras/compras-list/compras-list.component';
+import { ComprasViewComponent } from './Components/compras/compras-view/compras-view.component';
 import { DashboardComponent } from './Components/dashboard/dashboard/dashboard.component';
 import { ProduccionCrearComponent } from './Components/produccion/produccion-crear/produccion-crear.component';
 import { ProduccionListComponent } from './Components/produccion/produccion-list/produccion-list.component';
@@ -11,6 +12,7 @@ import { SuplidoresListaComponent } from './Components/Suplidores/suplidores-lis
 import { UnidadListComponent } from './Components/unidad/unidad-list/unidad-list.component';
 import { VentasCreateComponent } from './Components/ventas/ventas-create/ventas-create.component';
 import { VentasListComponent } from './Components/ventas/ventas-list/ventas-list.component';
+import { VentasViewComponent } from './Components/ventas/ventas-view/ventas-view.component';
 
 const routes: Routes = [
   {path:"", component:DashboardComponent },
@@ -20,8 +22,10 @@ const routes: Routes = [
   {path:"suplidores", component:SuplidoresListaComponent },
   {path:"ventas", component:VentasListComponent},
   {path:"ventas/crear", component:VentasCreateComponent},
+  {path:"ventas/vista/:id", component:VentasViewComponent},
   {path:"compras", component:ComprasListComponent },
   {path:"compras/crear", component:ComprasCreateComponent },
+  {path:"compras/vista/:id", component:ComprasViewComponent },
   {path:"produccion", component:ProduccionListComponent },
   {path:"produccion/crear", component:ProduccionCrearComponent },
   {path:"**", component:DashboardComponent },

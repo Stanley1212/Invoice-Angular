@@ -17,6 +17,10 @@ export class ComprasService {
     return this.http.get<Pagination<ComprasListDto[]>>(`${this.urlBase}?pageSize=${cantidadElementosAMostra}&currentPage=${pagina}`);
   }
 
+  public obtenerById(id: number): Observable<ComprasListDto> {
+    return this.http.get<ComprasListDto>(`${this.urlBase}/${id}`);
+  }
+
   public Crear(data:ComprasListDto) {
     return this.http.post(this.urlBase,data);
   }

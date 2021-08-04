@@ -17,6 +17,10 @@ export class VentasService {
     return this.http.get<Pagination<VentasCreateListDto[]>>(`${this.urlBase}?pageSize=${cantidadElementosAMostra}&currentPage=${pagina}`);
   }
 
+  public obtenerById(id: number): Observable<VentasCreateListDto> {
+    return this.http.get<VentasCreateListDto>(`${this.urlBase}/${id}`);
+  }
+
   public Crear(data:VentasCreateListDto) {
     return this.http.post(this.urlBase,data);
   }

@@ -46,6 +46,8 @@ export class VentasCreateComponent implements OnInit {
       return;
     }
 
+    console.log(this.Object);
+
     this.ventaService.Crear(this.Object).subscribe(()=>{
       Swal.fire("Completado","Venta procesada con exito","success");
       this.router.navigate(["ventas"]);
@@ -216,5 +218,11 @@ export class VentasCreateComponent implements OnInit {
     });
 
     return dialogRef.afterClosed();
+  }
+
+  typeChange(type:number) {
+    this.Object.type =type;
+    console.log(this.Object.type, type);
+    
   }
 }

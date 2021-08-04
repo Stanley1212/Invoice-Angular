@@ -36,9 +36,9 @@
     </p>
 
     <p style="margin-bottom: 15px;">
-      <mat-radio-group [(ngModel)]="Object.type" name="type" #type="ngModel">
-        <mat-radio-button value="0" [checked]="true">Factura</mat-radio-button>
-        <mat-radio-button value="1" style="margin-left: 5px;">Nota de Crédito</mat-radio-button>
+      <mat-radio-group name="type" color="primary">
+        <mat-radio-button value="0" [checked]="Object.type === 0" (click)="typeChange(0)">Factura</mat-radio-button>
+        <mat-radio-button value="1" style="margin-left: 5px;" [checked]="Object.type === 1" (click)="typeChange(1)">Nota de Crédito</mat-radio-button>
       </mat-radio-group>
     </p>
 
@@ -51,7 +51,7 @@
         Guardar
       </button>
 
-      <button mat-flat-button routerLink="clientes">
+      <button mat-flat-button routerLink="/ventas">
         Cancelar
       </button>
 
